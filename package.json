@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
+    "start": "node dist/main",
     "dev": "./node_modules/.bin/nodemon src/main --exec babel-node",
     "build": "babel src --out-dir dist",
-    "prd": "pm2 start bin/www",
+    "prd": "pm2 start dist/main.js",
     "models": "babel-node ./models.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint"
