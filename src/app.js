@@ -9,7 +9,6 @@ import response from './middlewares/response'
 
 import { koaSwagger } from 'koa2-swagger-ui'
 
-import users from './routes/users'
 import article from './routes/article'
 import swagger from './routes/swagger'
 
@@ -49,7 +48,6 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(users.routes(), users.allowedMethods())
 app.use(article.routes(), article.allowedMethods())
 
 // swagger
