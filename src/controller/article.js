@@ -1,5 +1,6 @@
 import Controller from '../class/controller'
 
+export const name = 'Article'
 export default class Article extends Controller {
   static init(ctx) {
     super.init(ctx)

@@ -1,5 +1,7 @@
 import Controller from '../class/controller'
 
+export const name = 'Upload'
+
 export default class Upload extends Controller {
   static init(ctx) {
     super.init(ctx)

@@ -1,36 +1,19 @@
 import database from '../config/database'
 import { Sequelize, DataTypes } from 'sequelize'
-import article from './article.js'
-import category from './category.js'
-import option from './option.js'
-import route from './route.js'
-import tag from './tag.js'
-import upload from './upload.js'
-import user from './user.js'
+import context from '../utils/context'
 
-/**
- * initModels 初始化 Models
- * @param {*} sequelize
- */
 const initModels = () => {
   const sequelize = new Sequelize(database)
-  const Article = article.init(sequelize, DataTypes)
-  const Category = category.init(sequelize, DataTypes)
-  const Option = option.init(sequelize, DataTypes)
-  const Route = route.init(sequelize, DataTypes)
-  const Tag = tag.init(sequelize, DataTypes)
-  const Upload = upload.init(sequelize, DataTypes)
-  const User = user.init(sequelize, DataTypes)
-
-  return {
-    Article,
-    Category,
-    Option,
-    Route,
-    Tag,
-    Upload,
-    User
-  }
+  const modules = {}
+  const files = context(__dirname, false, /\.js$/)
+  files
+    .keys()
+    .filter(key => key !== 'index.js')
+    .forEach(key => {
+      const ctx = files.context(key)
+      modules[ctx.name] = ctx.default.init(sequelize, DataTypes)
+    })
+  return modules
 }
 
 export default initModels

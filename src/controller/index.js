@@ -1,13 +1,16 @@
-import article from './article'
-import upload from './upload'
+import context from '../utils/context'
 
-const initControllers = ctx => {
-  const Article = article.init(ctx)
-  const Upload = upload.init(ctx)
-  return {
-    Article,
-    Upload
-  }
+const initControllers = () => {
+  const modules = {}
+  const files = context(__dirname, false, /\.js$/)
+  files
+    .keys()
+    .filter(key => key !== 'index.js')
+    .forEach(key => {
+      const fileContext = files.context(key)
+      modules[fileContext.name] = fileContext.default
+    })
+  return modules
 }
 
 export default initControllers

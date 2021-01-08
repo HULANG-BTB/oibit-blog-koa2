@@ -1,5 +1,7 @@
-import { Model } from 'sequelize'
+import _sequelize from 'sequelize'
+const { Model } = _sequelize
 
+export const name = 'Upload'
 export default class upload extends Model {
   static init(sequelize, DataTypes) {
     super.init(

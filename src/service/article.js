@@ -1,4 +1,6 @@
 import Service from '../class/service'
+
+export const name = 'Article'
 export default class Article extends Service {
   static init() {
     super.init()
