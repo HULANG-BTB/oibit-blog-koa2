@@ -1,17 +1,19 @@
-const router = require('koa-router')()
+import koaRouter from 'koa-router'
 
-router.get('/', async (ctx) => {
+const router = koaRouter()
+
+router.get('/', async ctx => {
   ctx.body = 'Hello Koa 2!'
 })
 
-router.get('/string', async (ctx) => {
+router.get('/string', async ctx => {
   ctx.body = 'koa2 string'
 })
 
-router.get('/json', async (ctx) => {
+router.get('/json', async ctx => {
   ctx.body = {
     title: 'koa2 json'
   }
 })
 
-module.exports = router
+export default router
