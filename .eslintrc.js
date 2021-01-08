@@ -1,13 +1,18 @@
 module.exports = {
   env: {
     browser: true,
-    commonjs: true,
-    es6: true
+    es6: true,
+    node: true
   },
-  extends: ['standard', 'prettier'],
+  extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'never']
+  }
 }

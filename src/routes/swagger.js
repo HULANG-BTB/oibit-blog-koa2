@@ -20,7 +20,7 @@ const options = {
 
 const swaggerSpec = swaggerJsDoc(options)
 
-router.get('/swagger.json', async (ctx, next) => {
+router.get('/swagger.json', async (ctx) => {
   ctx.set('Content-Type', 'application/json')
   ctx.body = swaggerSpec
 })

@@ -10,18 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/runtime": "^7.12.5",
     "debug": "^4.1.1",
-    "eslint": "7.12.1",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "4.2.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
@@ -30,13 +19,20 @@
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa2-swagger-ui": "^5.0.5",
-    "lint-staged": "^10.5.3",
     "mysql2": "^2.2.5",
     "prettier": "^2.2.1",
     "sequelize": "^6.3.5",
     "swagger-jsdoc": "^6.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/runtime": "^7.12.5",
+    "eslint": "^7.17.0",
+    "lint-staged": "^10.5.3",
     "nodemon": "^1.19.1"
   },
   "gitHooks": {
