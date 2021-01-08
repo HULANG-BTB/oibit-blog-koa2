@@ -8,13 +8,13 @@ import _upload from './upload.js'
 import _user from './user.js'
 
 export default function initModels(sequelize) {
-  var article = _article.init(sequelize, DataTypes)
-  var category = _category.init(sequelize, DataTypes)
-  var option = _option.init(sequelize, DataTypes)
-  var route = _route.init(sequelize, DataTypes)
-  var tag = _tag.init(sequelize, DataTypes)
-  var upload = _upload.init(sequelize, DataTypes)
-  var user = _user.init(sequelize, DataTypes)
+  const article = _article.init(sequelize, DataTypes)
+  const category = _category.init(sequelize, DataTypes)
+  const option = _option.init(sequelize, DataTypes)
+  const route = _route.init(sequelize, DataTypes)
+  const tag = _tag.init(sequelize, DataTypes)
+  const upload = _upload.init(sequelize, DataTypes)
+  const user = _user.init(sequelize, DataTypes)
 
   return {
     article,
