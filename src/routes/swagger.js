@@ -1,4 +1,4 @@
-import koaRouter from "koa-router";
+import koaRouter from 'koa-router'
 import swaggerJsDoc from 'swagger-jsdoc'
 
 const router = koaRouter()
@@ -11,7 +11,7 @@ const definition = {
   },
   host: 'localhost:3000',
   basePath: '/'
-};
+}
 
 const options = {
   definition,
@@ -20,9 +20,9 @@ const options = {
 
 const swaggerSpec = swaggerJsDoc(options)
 
-router.get("/swagger.json", async (ctx, next) => {
+router.get('/swagger.json', async (ctx, next) => {
   ctx.set('Content-Type', 'application/json')
-  ctx.body = swaggerSpec;
-});
+  ctx.body = swaggerSpec
+})
 
 export default router

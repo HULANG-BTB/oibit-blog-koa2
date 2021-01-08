@@ -6,12 +6,11 @@ import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import database from './middlewares/database'
 
-
 import { koaSwagger } from 'koa2-swagger-ui'
 
 import index from './routes/index'
 import users from './routes/users'
-import swagger from "./routes/swagger";
+import swagger from './routes/swagger'
 
 // app instance
 const app = new Koa()
@@ -36,7 +35,6 @@ app.use(
 app.use(json())
 app.use(logger())
 app.use(database())
-app.use(require('koa-static')(__dirname + '/public'))
 
 // logger
 app.use(async (ctx, next) => {
