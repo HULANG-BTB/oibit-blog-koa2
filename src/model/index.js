@@ -21,7 +21,5 @@ import initModels from './init-models'
 
 export default function () {
   const sequelize = new Sequelize(database)
-  const models = initModels(sequelize)
-  console.log(models)
-  return models
+  return initModels(sequelize)
 }
