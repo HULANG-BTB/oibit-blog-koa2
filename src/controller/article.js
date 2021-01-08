@@ -2,10 +2,10 @@ import initServices from '../service'
 
 const service = initServices()
 
-export default class User {
+export default class Article {
   static init(ctx) {
     this.ctx = ctx
-    return User
+    return Article
   }
 
   static async query() {

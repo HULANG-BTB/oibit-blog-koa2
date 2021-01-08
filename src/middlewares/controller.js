@@ -1,4 +1,4 @@
-import initControllers from '../controller/index'
+import initControllers from '../controller'
 
 const createDbConnection = async (ctx, next) => {
   const controller = initControllers(ctx)

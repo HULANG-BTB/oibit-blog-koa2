@@ -1,11 +1,14 @@
 import koaRouter from 'koa-router'
+import initControllers from '../controller'
 
 const router = koaRouter()
 
+const controller = initControllers()
+
 router.prefix('/users')
 
-router.get('/query', function (ctx) {
-  ctx.body = 'this is a users response!'
+router.get('/query', async ctx => {
+  ctx.body = await controller.User.query()
 })
 
 /**

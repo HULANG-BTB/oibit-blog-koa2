@@ -4,7 +4,6 @@ import json from 'koa-json'
 import onerror from 'koa-onerror'
 import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
-import database from './middlewares/database'
 import controller from './middlewares/controller'
 
 import { koaSwagger } from 'koa2-swagger-ui'
@@ -35,7 +34,6 @@ app.use(
 app.use(json())
 app.use(logger())
 app.use(controller())
-app.use(database())
 
 // logger
 app.use(async (ctx, next) => {
