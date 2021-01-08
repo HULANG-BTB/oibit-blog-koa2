@@ -4,13 +4,10 @@ module.exports = {
     commonjs: true,
     es6: true
   },
-  extends: [
-    'standard'
-  ],
+  extends: ['standard', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  rules: {
-  }
+  rules: {}
 }
