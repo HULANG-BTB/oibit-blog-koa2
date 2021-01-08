@@ -4,7 +4,7 @@ const router = koaRouter()
 
 router.prefix('/users')
 
-router.get('/', function (ctx) {
+router.get('/query', function (ctx) {
   ctx.body = 'this is a users response!'
 })
 
