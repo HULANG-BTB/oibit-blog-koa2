@@ -1,0 +1,34 @@
+import Controller from '../class/controller'
+
+export const name = '{{name}}'
+
+export default class {{name}} extends Controller {
+  static init(ctx) {
+    super.init(ctx)
+    return {{name}}
+  }
+
+  static async insert() {
+    const data = this.ctx.request.body
+    return await this.service.{{name}}.query(data)
+  }
+
+  static async remove() {
+    const { id } = this.ctx.request.body
+    return await this.service.{{name}}.remove({ id })
+  }
+
+  static async update() {
+    const data = this.ctx.request
+    return await this.service.{{name}}.update(data)
+  }
+
+  static async query() {
+    const { id } = this.ctx.request.body
+    return await this.service.{{name}}.query({ id })
+  }
+
+  static async index() {
+    return await this.service.{{name}}.index()
+  }
+}

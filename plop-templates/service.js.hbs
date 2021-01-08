@@ -1,0 +1,34 @@
+import Service from '../class/service'
+
+export const name = '{{name}}'
+
+export default class {{name}} extends Service {
+  static init() {
+    super.init()
+    return {{name}}
+  }
+
+  static async insert(data) {
+    const result = await this.model.{{name}}.create(data)
+    return result
+  }
+
+  static async delete({ id }) {
+    const result = await this.model.{{name}}.destory(id)
+    return result
+  }
+
+  static async update(data) {
+    const result = await this.model.{{name}}.update(data)
+    return result
+  }
+
+  static async query({ id }) {
+    const result = await this.model.{{name}}.findByPk(id)
+    return result
+  }
+
+  static async index() {
+    return 'Hello {{name}}'
+  }
+}

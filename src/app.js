@@ -7,10 +7,9 @@ import logger from 'koa-logger'
 import controller from './middlewares/controller'
 import response from './middlewares/response'
 
-import { koaSwagger } from 'koa2-swagger-ui'
+import initRoutes from './routes'
 
-import article from './routes/article'
-import swagger from './routes/swagger'
+import { koaSwagger } from 'koa2-swagger-ui'
 
 // app instance
 const app = new Koa()
@@ -48,10 +47,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(article.routes(), article.allowedMethods())
-
-// swagger
-app.use(swagger.routes(), swagger.allowedMethods())
+initRoutes(app)
 
 // error-handling
 app.on('error', (err, ctx) => {

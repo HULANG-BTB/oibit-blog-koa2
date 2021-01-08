@@ -34,6 +34,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "lint-staged": "^10.5.3",
     "nodemon": "^1.19.1",
+    "plop": "^2.7.4",
     "prettier": "^2.2.1",
     "sequelize-auto": "^0.7.6",
     "yorkie": "^2.0.0"
