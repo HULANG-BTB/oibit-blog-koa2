@@ -1,12 +1,14 @@
-import initModels from '../model'
+import Service from '../class/service'
+export default class Article extends Service {
+  static init() {
+    super.init()
+    return Article
+  }
 
-const model = initModels()
-
-export default class Article {
   static async list({ page, size }) {
     const offset = (page - 1) * size
     const limit = size
-    const result = await model.Article.findAll({
+    const result = await this.model.Article.findAll({
       offset,
       limit,
       attributes: ['id', 'title', 'abstract', 'comment', 'view', 'like', 'create_time', 'update_time', 'thumbnail'],
@@ -19,7 +21,7 @@ export default class Article {
   }
 
   static async detail({ id }) {
-    const result = await model.Article.findByPk(id)
+    const result = await this.model.Article.findByPk(id)
     return result
   }
 
@@ -36,7 +38,7 @@ export default class Article {
   }
 
   static async archive() {
-    const result = await model.Article.findAll({
+    const result = await this.model.Article.findAll({
       attributes: ['id', 'title', 'abstract'],
       order: [
         ['create_time', 'DESC'],

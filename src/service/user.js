@@ -1,10 +1,12 @@
-import initModels from '../model'
+import Service from '../class/service'
 
-const model = initModels()
-
-export default class User {
+export default class User extends Service {
+  static init() {
+    super.init()
+    return User
+  }
   static async query() {
-    const data = await model.User.findAll()
+    const data = await this.model.User.findAll()
     return data
   }
 }
