@@ -41,8 +41,9 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "./src/*.{js}": [
-      "eslint --fix --",
+    "src/**/*.{js,json}": [
+      "eslint --fix",
+      "prettier --write",
       "git add"
     ]
   }

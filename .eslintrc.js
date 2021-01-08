@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: ['prettier'],
   rules: {
-    indent: ['error', 2],
+    indent: ['warn', 2],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never']

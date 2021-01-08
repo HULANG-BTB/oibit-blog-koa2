@@ -7,19 +7,19 @@ router.get('/', function (ctx) {
 })
 
 /**
-* @swagger
-* definitions:
-*   user:
-*     properties:
-*       name:
-*         type: string
-*       breed:
-*         type: string
-*       age:
-*         type: integer
-*       sex:
-*         type: string
-*/
+ * @swagger
+ * definitions:
+ *   user:
+ *     properties:
+ *       name:
+ *         type: string
+ *       breed:
+ *         type: string
+ *       age:
+ *         type: integer
+ *       sex:
+ *         type: string
+ */
 
 /**
  * @swagger
