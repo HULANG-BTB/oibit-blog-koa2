@@ -1,6 +1,6 @@
 const createResponse = async (ctx, next) => {
   const response = {
-    code: 100,
+    code: 200,
     data: null,
     error: null
   }
@@ -8,7 +8,7 @@ const createResponse = async (ctx, next) => {
     await next()
     response.data = ctx.body
   } catch (e) {
-    response.code = 200
+    response.code = 500
     response.error = e.message
   } finally {
     ctx.body = response
