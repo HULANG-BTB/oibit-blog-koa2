@@ -1,8 +1,7 @@
 import _sequelize from 'sequelize'
-const { Model } = _sequelize
+const { Model, Sequelize } = _sequelize
 
-export const name = 'Article'
-export default class article extends Model {
+export default class Article extends Model {
   static init(sequelize, DataTypes) {
     super.init(
       {
@@ -82,6 +81,6 @@ export default class article extends Model {
         ]
       }
     )
-    return article
+    return Article
   }
 }
