@@ -39,7 +39,7 @@ router.get('/', function (ctx) {
  *           $ref: '#/definitions/user'
  */
 router.get('/bar', function (ctx) {
-  ctx.body = 'this is a users/bar response'
+  ctx.body = ctx.sequelize
 })
 
 export default router
