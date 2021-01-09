@@ -8,8 +8,13 @@ export default class Upload extends Controller {
     return Upload
   }
 
-  static async image() {
-    const data = this.ctx.request
-    return await this.service.Upload.image(data)
+  static async images() {
+    const files = this.ctx.request.files
+    console.log(JSON.stringify(files))
+    // for (let file of files) {
+    //   console.log(file.name)
+    // }
+    return files
+    // return await this.service.Upload.images({})
   }
 }

@@ -1,11 +1,13 @@
 import Koa from 'koa'
 
+import koaBody from 'koa-body'
 import json from 'koa-json'
 import onerror from 'koa-onerror'
-import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import controller from './middlewares/controller'
 import response from './middlewares/response'
+
+import uploadConfig from './config/upload'
 
 import initRoutes from './routes'
 
@@ -19,11 +21,6 @@ onerror(app)
 
 // middlewares
 app.use(
-  bodyparser({
-    enableTypes: ['json', 'form', 'text']
-  })
-)
-app.use(
   koaSwagger({
     routePrefix: '/swagger', // host at /swagger instead of default /docs
     swaggerOptions: {
@@ -33,6 +30,7 @@ app.use(
 )
 app.use(json())
 app.use(logger())
+app.use(koaBody(uploadConfig))
 app.use(controller())
 
 // 统一接口返回

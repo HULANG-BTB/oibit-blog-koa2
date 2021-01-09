@@ -7,8 +7,9 @@ const controller = initControllers()
 
 router.prefix('/api/upload')
 
-router.get('/image', async ctx => {
-  ctx.body = await controller.Article.list()
+router.post('/images', async ctx => {
+  console.log(ctx.request.files)
+  ctx.body = await controller.Upload.images()
 })
 
 export default router
