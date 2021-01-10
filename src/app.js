@@ -17,9 +17,6 @@ import { koaSwagger } from 'koa2-swagger-ui'
 // app instance
 const app = new Koa()
 
-// 统一接口返回
-app.use(response())
-
 // error handler
 onerror(app)
 
@@ -44,6 +41,9 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+// 统一接口返回
+app.use(response())
 
 // routes
 initRoutes(app)

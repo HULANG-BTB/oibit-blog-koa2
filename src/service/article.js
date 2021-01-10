@@ -1,9 +1,10 @@
-import Service from '../class/service'
+import Service from '../annotation/service'
 
 export const name = 'Article'
-export default class Article extends Service {
+
+@Service
+class Article {
   static init() {
-    super.init()
     return Article
   }
 
@@ -50,3 +51,5 @@ export default class Article extends Service {
     return result
   }
 }
+
+export default Article

@@ -1,10 +1,11 @@
-import Controller from '../class/controller'
+import Controller from '../annotation/controller'
 
 export const name = 'Upload'
 
-export default class Upload extends Controller {
+@Controller
+class Upload {
   static init(ctx) {
-    super.init(ctx)
+    this.ctx = ctx
     return Upload
   }
 
@@ -19,3 +20,5 @@ export default class Upload extends Controller {
     return await this.service.Upload.images(files)
   }
 }
+
+export default Upload

@@ -1,13 +1,13 @@
-import Service from '../class/service'
+import Service from '../annotation/service'
 import directory from '../config/directory'
 import moment from 'moment'
 import iostream from '../utils/iostream'
 
 export const name = 'Upload'
 
-export default class Upload extends Service {
+@Service
+class Upload {
   static init() {
-    super.init()
     return Upload
   }
 
@@ -51,3 +51,5 @@ export default class Upload extends Service {
     return 'Hello Upload'
   }
 }
+
+export default Upload

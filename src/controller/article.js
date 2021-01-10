@@ -1,9 +1,11 @@
-import Controller from '../class/controller'
+import Controller from '../annotation/controller'
 
 export const name = 'Article'
-export default class Article extends Controller {
+
+@Controller
+class Article {
   static init(ctx) {
-    super.init(ctx)
+    this.ctx = ctx
     return Article
   }
 
@@ -37,3 +39,5 @@ export default class Article extends Controller {
     return await this.service.Article.archive()
   }
 }
+
+export default Article
