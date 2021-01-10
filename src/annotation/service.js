@@ -2,16 +2,15 @@ import initModels from '../model'
 
 const model = initModels()
 
-// export default class Service {
-//   static init() {
-//     this.model = model
-//   }
-// }
-
-export const services = {}
+export const service = {}
 
 function Service(target) {
   target.model = model
+  const serviceName = target
+    .valueOf()
+    .toString()
+    .match(/^function (.*)\(\)\s/)[1]
+  service[serviceName] = target
 }
 
 export default Service
