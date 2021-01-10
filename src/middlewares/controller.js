@@ -1,9 +1,8 @@
-import initControllers from '../controller'
+import { controller } from '../annotation/controller'
 
 const createDbConnection = async (ctx, next) => {
-  const controllers = initControllers()
-  Object.keys(controllers).forEach(key => {
-    controllers[key] = controllers[key].init(ctx)
+  Object.keys(controller).forEach(key => {
+    controller[key] = controller[key].init(ctx)
   })
   await next()
 }
