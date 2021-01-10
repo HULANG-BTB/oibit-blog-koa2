@@ -10,11 +10,12 @@ export default class Upload extends Controller {
 
   static async images() {
     const files = this.ctx.request.files
-    console.log(JSON.stringify(files))
-    // for (let file of files) {
-    //   console.log(file.name)
-    // }
-    return files
-    // return await this.service.Upload.images({})
+    // 检查文件格式
+    Object.keys(files).forEach(key => {
+      if (files[key].type.indexOf('image') === -1) {
+        throw new Error('Only image file is allowed.')
+      }
+    })
+    return await this.service.Upload.images(files)
   }
 }
