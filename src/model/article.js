@@ -1,5 +1,5 @@
 import _sequelize from 'sequelize'
-const { Model, Sequelize } = _sequelize
+const { Model } = _sequelize
 
 export default class Article extends Model {
   static init(sequelize, DataTypes) {
@@ -50,16 +50,6 @@ export default class Article extends Model {
           defaultValue: 0,
           comment: '点赞次数'
         },
-        create_time: {
-          type: DataTypes.DATE,
-          allowNull: true,
-          comment: '创建时间'
-        },
-        update_time: {
-          type: DataTypes.DATE,
-          allowNull: true,
-          comment: '更新时间'
-        },
         version: {
           type: DataTypes.INTEGER,
           allowNull: false,
@@ -70,7 +60,10 @@ export default class Article extends Model {
       {
         sequelize,
         tableName: 'article',
-        timestamps: false,
+        timestamps: true,
+        createdAt: 'create_time',
+        updatedAt: 'update_time',
+        version: 'version',
         indexes: [
           {
             name: 'PRIMARY',

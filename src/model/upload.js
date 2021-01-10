@@ -1,5 +1,5 @@
 import _sequelize from 'sequelize'
-const { Model, Sequelize } = _sequelize
+const { Model } = _sequelize
 
 export default class Upload extends Model {
   static init(sequelize, DataTypes) {
@@ -22,21 +22,20 @@ export default class Upload extends Model {
           allowNull: false,
           comment: '大小'
         },
-        create_time: {
-          type: DataTypes.INTEGER.UNSIGNED,
-          allowNull: true,
-          comment: '上传时间'
-        },
-        update_time: {
-          type: DataTypes.INTEGER.UNSIGNED,
-          allowNull: true,
-          comment: '修改时间'
+        version: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 1,
+          comment: '乐观锁'
         }
       },
       {
         sequelize,
         tableName: 'upload',
-        timestamps: false,
+        timestamps: true,
+        createdAt: 'create_time',
+        updatedAt: 'update_time',
+        version: 'version',
         indexes: [
           {
             name: 'PRIMARY',
