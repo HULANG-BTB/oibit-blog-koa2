@@ -8,7 +8,6 @@ const controller = initControllers()
 router.prefix('/api/upload')
 
 router.post('/images', async ctx => {
-  console.log(ctx.request.files)
   ctx.body = await controller.Upload.images()
 })
 
