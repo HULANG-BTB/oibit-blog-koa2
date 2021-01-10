@@ -1,9 +1,13 @@
+import directory from './config/directory'
+
 import Koa from 'koa'
 
 import koaBody from 'koa-body'
 import json from 'koa-json'
 import onerror from 'koa-onerror'
 import logger from 'koa-logger'
+import resource from 'koa-static'
+
 import controller from './middlewares/controller'
 import response from './middlewares/response'
 
@@ -43,6 +47,9 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+// static resource
+app.use(resource(directory.static))
 
 // routes
 initRoutes(app)
