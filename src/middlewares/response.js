@@ -11,7 +11,9 @@ const createResponse = async (ctx, next) => {
     response.code = 500
     response.error = e.message
   } finally {
-    ctx.body = response
+    if (response.data || response.error) {
+      ctx.body = response
+    }
   }
 }
 
