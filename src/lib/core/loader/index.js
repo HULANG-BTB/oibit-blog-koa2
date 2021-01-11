@@ -5,7 +5,7 @@ import { loadController } from './controller'
 import { loadService } from './service'
 
 export const autoloader = app => {
-  loadService(app)
+  loadService()
   loadController(app)
 }
 
