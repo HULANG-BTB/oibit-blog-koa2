@@ -8,7 +8,7 @@ module.exports = plop => {
         type: 'list',
         name: 'type',
         message: '文件类型',
-        choices: ['Controller', 'Service', 'Route', 'All']
+        choices: ['Controller', 'Service', 'All']
       },
       {
         type: 'input',
@@ -47,21 +47,11 @@ module.exports = plop => {
         skipIfExists: true
       }
 
-      const route = {
-        type: 'add',
-        path: '{{directory}}/routes/{{filename}}.js',
-        templateFile: 'plop-templates/route.js.hbs',
-        skipIfExists: true
-      }
-
-      if (data.type === 'Controller') {
+      if (data.type === 'Controller' || data.type === 'All') {
         actions.push(controller)
-      } else if (data.type === 'Service') {
+      }
+      if (data.type === 'Service' || data.type === 'All') {
         actions.push(service)
-      } else if (data.type === 'Route') {
-        actions.push(route)
-      } else if (data.type === 'All') {
-        actions.push(route, controller, service)
       }
       return actions
     }

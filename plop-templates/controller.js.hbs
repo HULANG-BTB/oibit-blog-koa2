@@ -1,34 +1,41 @@
-import Controller from '../class/controller'
+import { Controller, GetMapping, PostMapping, PutMapping, DeleteMapping } from '../lib/core/decorator'
 
-export const name = '{{name}}'
+@Controller
+class {{name}} {
+  static prefix = '/'
 
-export default class {{name}} extends Controller {
-  static init(ctx) {
-    super.init(ctx)
-    return {{name}}
+  @GetMapping('/list')
+  static async list() {
+    const { page, size } = this.ctx.query
+    const data = {
+      page: parseInt(page) || 1,
+      size: parseInt(size) || 10
+    }
+    return await this.service.{{name}}.list(data)
   }
 
+  @PostMapping('/insert')
   static async insert() {
-    const data = this.ctx.request.body
-    return await this.service.{{name}}.query(data)
+    const { title, abstract, category, tags, thumbnail } = this.ctx.body
+    const data = { title, abstract, category, tags, thumbnail }
+    return await this.service.{{name}}.insert(data)
   }
 
-  static async remove() {
-    const { id } = this.ctx.request.body
-    return await this.service.{{name}}.remove({ id })
-  }
-
+  @PutMapping('/update')
   static async update() {
-    const data = this.ctx.request
+    const { title, abstract, category, tags, thumbnail } = this.ctx.body
+    const data = { title, abstract, category, tags, thumbnail }
     return await this.service.{{name}}.update(data)
   }
 
-  static async query() {
-    const { id } = this.ctx.request.body
-    return await this.service.{{name}}.query({ id })
+  @DeleteMapping('/delete')
+  static async detail() {
+    const { id } = this.ctx.query
+    const data = { id }
+    return await this.service.{{name}}.delete(data)
   }
 
-  static async index() {
-    return await this.service.{{name}}.index()
-  }
+
 }
+
+export default {{name}}

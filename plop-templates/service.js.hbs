@@ -1,34 +1,30 @@
-import Service from '../class/service'
+import Service from '../lib/core/decorator/service'
 
-export const name = '{{name}}'
+@Service
+class {{name}} {
 
-export default class {{name}} extends Service {
-  static init() {
-    super.init()
-    return {{name}}
+  static async list({ page, size }) {
+    const offset = (page - 1) * size
+    const limit = size
+    const result = await this.model.{{name}}.findAll({
+      offset,
+      limit
+    })
+    return result
   }
 
   static async insert(data) {
-    const result = await this.model.{{name}}.create(data)
-    return result
-  }
-
-  static async delete({ id }) {
-    const result = await this.model.{{name}}.destory(id)
-    return result
+    return await this.model.{{name}}.create(data)
   }
 
   static async update(data) {
-    const result = await this.model.{{name}}.update(data)
-    return result
+    return await this.model.{{name}}.save(data)
   }
 
-  static async query({ id }) {
-    const result = await this.model.{{name}}.findByPk(id)
-    return result
+  static async delete({ id }) {
+    return await this.model.{{name}}.destory(id)
   }
 
-  static async index() {
-    return 'Hello {{name}}'
-  }
 }
+
+export default {{name}}
