@@ -1,10 +1,10 @@
-import { Controller, GetMapping } from '../lib/core/decorator'
+import { Controller, PostMapping } from '../lib/core/decorator'
 
 @Controller
 class Upload {
   static prefix = '/api/upload'
 
-  @GetMapping('/list')
+  @PostMapping('/images')
   static async images() {
     const files = this.ctx.request.files
     // 检查文件格式

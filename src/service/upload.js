@@ -1,4 +1,4 @@
-import Service from '../lib/core/decorator/service'
+import { Service } from '../lib/core/decorator'
 import directory from '../config/directory'
 import moment from 'moment'
 import iostream from '../utils/iostream'

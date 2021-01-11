@@ -1,4 +1,4 @@
-import Service from '../lib/core/decorator/service'
+import { Service } from '../lib/core/decorator'
 
 @Service
 class Article {
