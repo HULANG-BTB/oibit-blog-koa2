@@ -1,6 +1,4 @@
-import Service from '../annotation/service'
-
-export const name = 'Article'
+import Service from '../lib/core/decorator/service'
 
 @Service
 class Article {

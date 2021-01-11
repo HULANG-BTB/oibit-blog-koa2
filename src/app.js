@@ -5,12 +5,11 @@ import json from 'koa-json'
 import onerror from 'koa-onerror'
 import logger from 'koa-logger'
 
-import controller from './middlewares/controller'
 import response from './middlewares/response'
 
 import uploadConfig from './config/upload'
 
-import initRoutes from './routes'
+import autoloader from './lib/core/loader'
 
 import { koaSwagger } from 'koa2-swagger-ui'
 
@@ -32,7 +31,7 @@ app.use(
 app.use(json())
 app.use(logger())
 app.use(koaBody(uploadConfig))
-app.use(controller())
+// app.use(controller())
 
 // logger
 app.use(async (ctx, next) => {
@@ -46,7 +45,9 @@ app.use(async (ctx, next) => {
 app.use(response())
 
 // routes
-initRoutes(app)
+// initRoutes(app)
+autoloader(app)
+// app.use(router.routes(), router.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

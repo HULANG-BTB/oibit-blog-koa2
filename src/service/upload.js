@@ -1,9 +1,7 @@
-import Service from '../annotation/service'
+import Service from '../lib/core/decorator/service'
 import directory from '../config/directory'
 import moment from 'moment'
 import iostream from '../utils/iostream'
-
-export const name = 'Upload'
 
 @Service
 class Upload {

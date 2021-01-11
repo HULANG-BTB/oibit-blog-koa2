@@ -1,14 +1,10 @@
-import Controller from '../annotation/controller'
-
-export const name = 'Upload'
+import { Controller, GetMapping } from '../lib/core/decorator'
 
 @Controller
 class Upload {
-  static init(ctx) {
-    this.ctx = ctx
-    return Upload
-  }
+  static prefix = '/api/upload'
 
+  @GetMapping('/list')
   static async images() {
     const files = this.ctx.request.files
     // 检查文件格式
