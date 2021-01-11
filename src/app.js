@@ -11,8 +11,6 @@ import uploadConfig from './config/upload'
 
 import autoloader from './lib/core/loader'
 
-import { koaSwagger } from 'koa2-swagger-ui'
-
 // app instance
 const app = new Koa()
 
@@ -20,14 +18,6 @@ const app = new Koa()
 onerror(app)
 
 // middlewares
-app.use(
-  koaSwagger({
-    routePrefix: '/swagger', // host at /swagger instead of default /docs
-    swaggerOptions: {
-      url: '/swagger.json' // example path to json
-    }
-  })
-)
 app.use(json())
 app.use(logger())
 app.use(koaBody(uploadConfig))
