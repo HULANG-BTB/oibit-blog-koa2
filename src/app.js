@@ -4,8 +4,6 @@ import koaBody from 'koa-body'
 import json from 'koa-json'
 import onerror from 'koa-onerror'
 import logger from 'koa-logger'
-// import sessionConfig from './config/session'
-// import session from 'koa-session'
 
 import response from './middlewares/response'
 
@@ -23,10 +21,6 @@ onerror(app)
 app.use(json())
 app.use(logger())
 app.use(koaBody(uploadConfig))
-
-// use session
-// app.keys = ['secret']
-// app.use(session(sessionConfig, app))
 // app.use(controller())
 
 // logger

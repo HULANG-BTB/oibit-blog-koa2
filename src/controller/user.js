@@ -9,20 +9,17 @@ class User {
     const { username, password } = this.ctx.request.body
     const data = { username, password }
     const result = await this.service.User.login(data)
-    if (result) {
-      // this.ctx.session.id = result.id
-    }
     return result
   }
 
   @GetMapping('/profile')
   static async profile() {
-    const { id } = this.ctx.session
-    if (id) {
-      return await this.service.User.profile({ id })
-    } else {
-      throw new Error('You must login first.')
-    }
+    // const { id } = this.ctx.session
+    // if (id) {
+    //   return await this.service.User.profile({ id })
+    // } else {
+    //   throw new Error('You must login first.')
+    // }
   }
 }
 

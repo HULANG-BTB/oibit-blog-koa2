@@ -4,7 +4,7 @@ import { Service } from '../lib/core/decorator'
 class User {
   static async login(data) {
     const { username, password } = data
-    const user = this.model.User.findOne({
+    const user = await this.model.User.findOne({
       where: {
         username,
         password
