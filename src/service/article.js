@@ -37,16 +37,18 @@ class Article {
     return result
   }
 
-  /**
-   * TODO 插入文章
-   *
-   * @static
-   * @param {*} data
-   * @return {*}
-   * @memberof Article
-   */
+  static async update(data) {
+    const { id, title, abstract, thumbnail, content } = data
+    const article = await this.model.Article.findByPk(id)
+    Object.assign(article, { title, abstract, thumbnail, content })
+    const result = article.save()
+    return result
+  }
+
   static async insert(data) {
-    return data
+    const { title, abstract, thumbnail, content } = data
+    const result = await this.model.Article.create({ title, abstract, thumbnail, content })
+    return result
   }
 
   static async archive() {

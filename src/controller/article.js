@@ -1,4 +1,4 @@
-import { Controller, DeleteMapping, GetMapping, PostMapping } from '../lib/core/decorator'
+import { Controller, DeleteMapping, GetMapping, PostMapping, PutMapping } from '../lib/core/decorator'
 
 @Controller
 class Article {
@@ -32,10 +32,17 @@ class Article {
     return await this.service.Article.detail(data)
   }
 
+  @PutMapping('/update')
+  static async update() {
+    const { id, title, abstract, thumbnail, content } = this.ctx.request.body
+    const data = { id, title, abstract, thumbnail, content }
+    return await this.service.Article.update(data)
+  }
+
   @PostMapping('/insert')
   static async insert() {
-    const { title, abstract, category, tags, thumbnail } = this.ctx.body
-    const data = { title, abstract, category, tags, thumbnail }
+    const { title, abstract, thumbnail, content } = this.ctx.request.body
+    const data = { title, abstract, thumbnail, content }
     return await this.service.Article.insert(data)
   }
 
