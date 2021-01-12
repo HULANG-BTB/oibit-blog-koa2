@@ -9,7 +9,8 @@
     "prd": "pm2 start dist/main.js",
     "models": "babel-node ./models.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fix": "prettier -w src"
   },
   "dependencies": {
     "debug": "^4.1.1",
