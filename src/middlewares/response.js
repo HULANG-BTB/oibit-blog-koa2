@@ -6,7 +6,9 @@ const createResponse = async (ctx, next) => {
   }
   try {
     await next()
-    response.data = ctx.body
+    if (/json/.test(ctx.type)) {
+      response.data = ctx.body
+    }
   } catch (e) {
     response.code = 500
     response.error = e.message
