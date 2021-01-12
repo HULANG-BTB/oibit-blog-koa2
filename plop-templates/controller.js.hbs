@@ -2,7 +2,7 @@ import { Controller, GetMapping, PostMapping, PutMapping, DeleteMapping } from '
 
 @Controller
 class {{name}} {
-  static prefix = '/'
+  static prefix = '/{{route}}'
 
   @GetMapping('/list')
   static async list() {
