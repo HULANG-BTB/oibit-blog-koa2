@@ -13,7 +13,8 @@ export const database = {
     timestamps: true,
     createdAt: 'create_time',
     updatedAt: 'update_time',
-    version: 'version'
+    version: 'version',
+    deletedAt: 'delete_time'
   }
 }
 

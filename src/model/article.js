@@ -61,9 +61,11 @@ export default class Article extends Model {
         sequelize,
         tableName: 'article',
         timestamps: true,
+        paranoid: true,
         createdAt: 'create_time',
         updatedAt: 'update_time',
         version: 'version',
+        deletedAt: 'delete_time',
         indexes: [
           {
             name: 'PRIMARY',
