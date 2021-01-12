@@ -1,4 +1,4 @@
-import { Controller, GetMapping, PostMapping } from '../lib/core/decorator'
+import { Controller, DeleteMapping, GetMapping, PostMapping } from '../lib/core/decorator'
 
 @Controller
 class Article {
@@ -11,17 +11,22 @@ class Article {
 
   @GetMapping('/list')
   static async list() {
-    const { page, size } = this.ctx.query
+    const { page, limit } = this.ctx.query
     const data = {
       page: parseInt(page) || 1,
-      size: parseInt(size) || 10
+      size: parseInt(limit) || 10
     }
     return await this.service.Article.list(data)
   }
 
+  @DeleteMapping('/delete/:id')
+  static async delete() {
+    const { id } = this.ctx.params
+    return await this.service.Article.delete({ id })
+  }
+
   @GetMapping('/detail')
   static async detail() {
-    console.log(this.ctx.query)
     const { id } = this.ctx.query
     const data = { id }
     return await this.service.Article.detail(data)

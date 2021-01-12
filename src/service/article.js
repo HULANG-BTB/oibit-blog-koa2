@@ -9,7 +9,7 @@ class Article {
   static async list({ page, size }) {
     const offset = (page - 1) * size
     const limit = size
-    const result = await this.model.Article.findAll({
+    const result = await this.model.Article.findAndCountAll({
       offset,
       limit,
       attributes: ['id', 'title', 'abstract', 'comment', 'view', 'like', 'create_time', 'update_time', 'thumbnail'],
@@ -18,6 +18,17 @@ class Article {
         ['id', 'DESC']
       ]
     })
+    if (offset + page > result.count) {
+      page--
+    }
+    result.page = page
+    result.limit = limit
+    return result
+  }
+
+  static async delete({ id }) {
+    const article = await this.model.Article.findByPk(id)
+    const result = await article.destroy()
     return result
   }
 
