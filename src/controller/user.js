@@ -18,6 +18,12 @@ class User {
     const { id, username } = this.ctx.auth
     return await this.service.User.profile({ id, username })
   }
+
+  @GetMapping('/logout')
+  @Authentication
+  static async logout() {
+    return true
+  }
 }
 
 export default User
