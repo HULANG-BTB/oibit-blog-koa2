@@ -20,7 +20,7 @@ class Upload {
       if (iostream.move(src, dest)) {
         success.push({
           file: file.name,
-          url: `\\${iostream.relative(directory.root, dest)}`,
+          url: `${iostream.relative(directory.root, dest)}`,
           size: file.size
         })
       }

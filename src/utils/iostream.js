@@ -30,7 +30,9 @@ const move = (src, dest) => {
   }
 }
 
-const relative = path.relative
+const relative = (origin, dest) => {
+  return path.sep + path.relative(origin, dest)
+}
 
 const extname = filename => {
   return path.extname(filename)
