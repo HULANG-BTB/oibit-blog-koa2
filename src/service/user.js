@@ -1,4 +1,6 @@
 import { Service } from '../lib/core/decorator'
+import jwt from 'jsonwebtoken'
+import jwtconfig from '../config/jwt'
 
 @Service
 class User {
@@ -14,13 +16,16 @@ class User {
     if (!user) {
       throw new Error('username or passowrd error.')
     }
-    return user
+    const { id } = user
+    const token = jwt.sign({ id, username }, jwtconfig.priviteKey, { algorithm: jwtconfig.algorithm, expiresIn: jwtconfig.expires })
+    return { id, username, token }
   }
 
-  static async profile({ id }) {
+  static async profile({ id, username }) {
     const user = await this.model.User.findOne({
       where: {
-        id
+        id,
+        username
       },
       attributes: ['id', 'username']
     })

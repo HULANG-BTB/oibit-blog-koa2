@@ -1,4 +1,4 @@
-import { Controller, PostMapping, GetMapping } from '../lib/core/decorator'
+import { Controller, PostMapping, GetMapping, Authentication } from '../lib/core/decorator'
 
 @Controller
 class User {
@@ -13,13 +13,10 @@ class User {
   }
 
   @GetMapping('/profile')
+  @Authentication
   static async profile() {
-    // const { id } = this.ctx.session
-    // if (id) {
-    //   return await this.service.User.profile({ id })
-    // } else {
-    //   throw new Error('You must login first.')
-    // }
+    const { id, username } = this.ctx.auth
+    return await this.service.User.profile({ id, username })
   }
 }
 
