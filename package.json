@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node dist/main",
-    "dev": "./node_modules/.bin/nodemon src/main --exec babel-node",
+    "dev": "nodemon src/main --exec babel-node",
     "build": "babel src --out-dir dist",
     "prd": "pm2 start dist/main.js",
     "models": "babel-node ./models.js",
