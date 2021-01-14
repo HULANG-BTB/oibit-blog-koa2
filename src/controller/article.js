@@ -1,4 +1,4 @@
-import { Controller, DeleteMapping, GetMapping, PostMapping, PutMapping } from '../lib/core/decorator'
+import { Controller, DeleteMapping, GetMapping, PostMapping, PutMapping, Authentication } from '../lib/core/decorator'
 
 @Controller
 class Article {
@@ -20,6 +20,7 @@ class Article {
   }
 
   @DeleteMapping('/delete/:id')
+  @Authentication
   static async delete() {
     const { id } = this.ctx.params
     return await this.service.Article.delete({ id })
@@ -33,6 +34,7 @@ class Article {
   }
 
   @PutMapping('/update')
+  @Authentication
   static async update() {
     const { id, title, abstract, thumbnail, content } = this.ctx.request.body
     const data = { id, title, abstract, thumbnail, content }
@@ -40,6 +42,7 @@ class Article {
   }
 
   @PostMapping('/insert')
+  @Authentication
   static async insert() {
     const { title, abstract, thumbnail, content } = this.ctx.request.body
     const data = { title, abstract, thumbnail, content }
