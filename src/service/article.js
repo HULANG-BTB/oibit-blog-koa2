@@ -34,6 +34,7 @@ class Article {
 
   static async detail({ id }) {
     const result = await this.model.Article.findByPk(id)
+    await result.increment('view')
     return result
   }
 
