@@ -8,8 +8,6 @@ export function Controller() {
   const target = arguments[0]
   const routes = target.routes
   const prefix = target.prefix
-  // const authentication = target.authentication || []
-  const controllerName = target.toString().match(/^function (.*)\(\)\s/)[1]
   const router = new koaRouter()
   if (prefix) {
     router.prefix(prefix)
@@ -21,8 +19,8 @@ export function Controller() {
       })
     })
   }
-  router.controller = controllerName
-  controller[controllerName] = target
+  router.controller = target.name
+  controller[target.name] = target
 
   return router
 }
