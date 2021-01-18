@@ -35,7 +35,7 @@ class Article {
   static async detail({ id }) {
     try {
       const result = await this.model.Article.findByPk(id)
-      await result.increment('view')
+      await result.update({ view: result.view + 1 }, { silent: true })
       return result
     } catch {
       throw new Error('Article is not found.')
