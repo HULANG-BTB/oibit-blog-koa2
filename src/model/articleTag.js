@@ -1,37 +1,37 @@
 import _sequelize from 'sequelize'
 const { Model } = _sequelize
 
-export default class Upload extends Model {
+export default class ArticleTag extends Model {
   static init(sequelize, DataTypes) {
     super.init(
       {
-        id: {
-          autoIncrement: true,
+        aid: {
           type: DataTypes.INTEGER.UNSIGNED,
           allowNull: false,
-          primaryKey: true,
-          comment: 'ID'
+          comment: '文章id',
+          references: {
+            model: 'article',
+            key: 'id'
+          }
         },
-        url: {
-          type: DataTypes.STRING(255),
+        tid: {
+          type: DataTypes.INTEGER.UNSIGNED,
           allowNull: false,
-          comment: '保存路径'
-        },
-        size: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          comment: '大小'
+          comment: '标签id',
+          references: {
+            model: 'tag',
+            key: 'id'
+          }
         },
         version: {
           type: DataTypes.INTEGER,
           allowNull: true,
-          defaultValue: 1,
-          comment: '乐观锁'
+          defaultValue: 1
         }
       },
       {
         sequelize,
-        tableName: 'upload',
+        tableName: 'article_tag',
         timestamps: true,
         paranoid: true,
         createdAt: 'create_time',
@@ -40,14 +40,18 @@ export default class Upload extends Model {
         deletedAt: 'delete_time',
         indexes: [
           {
-            name: 'PRIMARY',
-            unique: true,
+            name: 'fk_article_id',
             using: 'BTREE',
-            fields: [{ name: 'id' }]
+            fields: [{ name: 'aid' }]
+          },
+          {
+            name: 'fk_tag_id',
+            using: 'BTREE',
+            fields: [{ name: 'tid' }]
           }
         ]
       }
     )
-    return Upload
+    return ArticleTag
   }
 }

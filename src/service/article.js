@@ -34,7 +34,9 @@ class Article {
 
   static async detail({ id }) {
     try {
-      const result = await this.model.Article.findByPk(id)
+      const result = await this.model.Article.findByPk(id, {
+        include: this.model.Tag
+      })
       await result.update({ view: result.view + 1 }, { silent: true })
       return result
     } catch {

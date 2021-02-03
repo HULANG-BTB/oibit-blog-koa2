@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize'
 const { Model } = _sequelize
 
-export default class Upload extends Model {
+export default class Tag extends Model {
   static init(sequelize, DataTypes) {
     super.init(
       {
@@ -10,28 +10,23 @@ export default class Upload extends Model {
           type: DataTypes.INTEGER.UNSIGNED,
           allowNull: false,
           primaryKey: true,
-          comment: 'ID'
+          comment: '主键'
         },
-        url: {
-          type: DataTypes.STRING(255),
+        name: {
+          type: DataTypes.STRING(20),
           allowNull: false,
-          comment: '保存路径'
-        },
-        size: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          comment: '大小'
+          comment: '标签名称'
         },
         version: {
           type: DataTypes.INTEGER,
           allowNull: true,
           defaultValue: 1,
-          comment: '乐观锁'
+          comment: '乐观锁定'
         }
       },
       {
         sequelize,
-        tableName: 'upload',
+        tableName: 'tag',
         timestamps: true,
         paranoid: true,
         createdAt: 'create_time',
@@ -48,6 +43,6 @@ export default class Upload extends Model {
         ]
       }
     )
-    return Upload
+    return Tag
   }
 }

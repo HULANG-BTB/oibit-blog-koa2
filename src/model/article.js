@@ -34,25 +34,25 @@ export default class Article extends Model {
         },
         comment: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
           defaultValue: 0,
           comment: '评论数目'
         },
         view: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
           defaultValue: 0,
           comment: '查看数目'
         },
         like: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
           defaultValue: 0,
           comment: '点赞次数'
         },
         version: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
           defaultValue: 1,
           comment: '乐观锁'
         }
