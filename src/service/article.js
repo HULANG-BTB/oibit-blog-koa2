@@ -18,7 +18,7 @@ class Article {
         ['id', 'DESC']
       ]
     })
-    if (offset + page > result.count) {
+    if (offset + size > result.count) {
       page--
     }
     result.page = page
@@ -60,7 +60,7 @@ class Article {
 
   static async archive() {
     const result = await this.model.Article.findAll({
-      attributes: ['id', 'title', 'abstract'],
+      attributes: ['id', 'title', 'abstract', 'create_time'],
       order: [
         ['create_time', 'DESC'],
         ['id', 'DESC']
