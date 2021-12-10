@@ -18,9 +18,6 @@ class Article {
         ['id', 'DESC']
       ]
     })
-    if (offset + size > result.count) {
-      page--
-    }
     result.page = page
     result.limit = limit
     return result
